@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        {% include "fm/modal.html" %}
+     
+
+         <script type="text/javascript">
+            $(function() {
+                $.fm({debug: true});
+            });
+         </script>
+
+        <script type="text/javascript">
+            $(function() {
+    $.fm({
+        debug: true,
+        custom_callbacks: {
+            "appendWithAlert": function(data, options) {
+                $(options.modal_target).append(data.message);
+                alert("model instance created!");
+            }
+        }
+    });
+});
+        </script>
+
+        
+<div class="container">
+  <div class="row">
+<div class="col-sm-2">
+</div>
+<div class="col-sm-8">
+{% block content %}{% endblock %}
+</div>
+<div class="col-sm-2">
+</div>
+</div>
+</div>
+
+
+
+
+
+
+    </body> 
+</html>

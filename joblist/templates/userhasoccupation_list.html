@@ -1,0 +1,38 @@
+{% include "base.html" %}
+{% include "modal_base.html" %}
+
+
+{% block content %}
+
+
+<h1>Connections between users and occupations</h1>
+<div style="margin: 0 auto; text-align:center; padding:1em;">
+        <a href="{% url 'userhasoccupation_new' %}" class="fm-create" data-fm-head="New Connection" data-fm-callback="reload">
+                    <button class="btn btn-primary btn-sm" type="">New Connection</button></a> 
+    </div>
+<div class="table-responsive">
+<table class="table">
+<thead>
+    <tr>
+    <th>User Name</th>
+    <th>Occupation </th>
+    <th>Update</th>
+    <th>Delete</th>
+    </tr>
+</thead> 
+<tbody>
+    {% for userhasoccupation in userhasoccupations %}
+    <tr>
+    <td>{{userhasoccupation.user_id}}</td>
+    <td>{{userhasoccupation.occup_id }}</td>
+    <td><a href="{% url 'userhasoccupation_edit' userhasoccupation.id %}" class="fm-update" data-fm-head="Edit Connection: {{ userhasoccupation }} ?" data-fm-callback="reload">
+                    <button class="btn btn-primary btn-sm" type="">Update</button></a></td>
+    <td><a href="{% url 'userhasoccupation_delete' userhasoccupation.id %}" class="fm-delete" data-fm-head="Delete of Connection: {{ userhasoccupation }} ?" data-fm-callback="reload">
+                    <button class="btn btn-danger btn-sm" type="">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+

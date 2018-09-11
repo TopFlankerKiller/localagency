@@ -1,0 +1,36 @@
+{% include "base.html" %}
+{% include "modal_base.html" %}
+
+
+{% block content %}
+<h1>Occupations</h1>
+<div style="margin: 0 auto; text-align:center; padding:1em;">
+        <a href="{% url 'occupation_new' %}" class="fm-create" data-fm-head="New Occupation" data-fm-callback="reload">
+                    <button class="btn btn-primary btn-sm" type="">New Occupation</button></a> 
+    </div>
+<div class="table-responsive">
+<table class="table">
+<thead>
+    <tr>
+    <th>Occupation</th>
+    <th>View</th>
+    <th>Update</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for occupation in occupations %}
+    <tr>
+    <td>{{ occupation.occupation }}</td>
+    <td><a href="{% url 'occupation_view' occupation.id %}">View</a></td>
+    <td><a href="{% url 'occupation_edit' occupation.id %}" class="fm-update" data-fm-head="Edit Occupation: {{ occupation }} ?" data-fm-callback="reload">
+                    <button class="btn btn-primary btn-sm" type="">Update</button></a></td>
+    <td><a href="{% url 'occupation_delete' occupation.id %}" class="fm-delete" data-fm-head="Delete of Occupation: {{ occupation }} ?" data-fm-callback="reload">
+                    <button class="btn btn-danger btn-sm" type="">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+

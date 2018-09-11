@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Local Agency Home</h1>
+  <p>Welcome to local agency project, a website developed by <em>Giorgos Topalidis</em> in order to experiment with CRUD cicle, using User and Occupation entities!</p>
+  <h2>Dynamic content...this content is fetched from my database.</h2>
+  <p>The agency has the following record counts:</p>
+  <ul>
+    <li><strong>Users:</strong> {{ num_users }}</li>
+    <li><strong>Occupations:</strong> {{ num_occupations }}</li>
+    <li><strong>Connections:</strong> {{ num_connections }}</li>
+  </ul>
+{% endblock %}

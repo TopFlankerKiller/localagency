@@ -1,0 +1,88 @@
+{% extends "modal_base.html" %}
+
+
+{% block content %}
+
+<!-- {% load static %} -->
+<a href="{% url 'index' %}">Home</a>
+
+<form action="/connection/"  method="post" >
+	{% csrf_token %}
+
+	<h3>{{message}}</h3>
+
+	<h3> <label for="your_name">Enter new user's name: </label>
+		 <input id="your_name" type="text" name="your_name" maxlength="100" required>
+	
+	 <label for="your_lastname">Enter new user's lastname: </label>
+		 <input id="your_lastname" type="text" name="your_lastname" maxlength="100" required>
+	
+	 <label for="your_email">Enter new user's email: </label>
+		 <input id="your_email" type="text" name="your_email" maxlength="100" required>
+	</h3>
+
+	<br>
+	<br>
+
+	<h3><label for="your_occupation">create a new occupation: </label>
+		<a href="{% url 'occupation_new' %}" class="fm-create" data-fm-head="New Occupation" data-fm-callback="reload">
+        <button class="btn btn-primary btn-sm" type="">New Occupation</button>
+    	</a>
+	</h3>
+	<br>
+	<h3><strong>or</strong> </h3>
+	<br>
+
+	<!--SIMPLE OPTION-->
+
+	<!-- <h3> <label for="your_list">choose occupation from the existing list: </label>
+	<select  id="myselection" name="occupations_option">
+			<option disabled selected value> -- select an option -- </option>
+			{% for occupation in occupations %}
+			<option value="{{occupation.occupation}}">{{occupation.occupation }}</option>
+			{% endfor %}		
+	</select>
+	</h3> -->
+
+
+	<!--MULTISELECT OPTION-->
+
+	<h3> <label for="your_list">choose occupation from the existing list: </label>
+	<select  id="myselection" name="occupations_option" multiple>
+			<option disabled selected value> -- select an option -- </option>
+			{% for occupation in occupations %}
+			<option value="{{occupation.occupation}}">{{occupation.occupation }}</option>
+			{% endfor %}		
+	</select>
+	<br>
+	<br>
+	<p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+	</h3>
+
+
+
+
+
+	<!-- <a class="add-row" href="javascript:void(0)">Add new occupation</a>
+	</h3>
+	<br>
+	<br>
+	<p3 hidden=""
+	 class="add-occupation">
+	 <label for="your_occupation">Enter new occupation:</label>
+	 <input id="your_occupation" type="text" name="your_occupation" maxlength="100" > -->
+    <!-- </p3> -->
+    <br>
+	<br>
+	
+	<p4><input type="submit" value="Submit"/></p4>
+</form>
+
+
+
+
+
+<!-- <script src="{% static "/js/jquery.js" %}"></script>
+<script src="{% static "/js/crud-ajax.js" %}"></script> -->
+
+{% endblock %}

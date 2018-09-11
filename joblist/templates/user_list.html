@@ -1,0 +1,43 @@
+{% include "base.html" %}
+{% include "modal_base.html" %}
+
+
+{% block content %}
+<h1>Users</h1>
+
+<div style="margin: 0 auto; text-align:center; padding:1em;">
+        <a href="{% url 'user_new' %}" class="fm-create" data-fm-head="New User" data-fm-callback="reload">
+                    <button class="btn btn-primary btn-sm" type="">New User</button></a> 
+    </div>
+<div class="table-responsive">
+<table class="table">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>View</th>
+    <th>Update</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for user in users %}
+    <tr>
+    <td>{{ user.name }}</td>
+    <td>{{ user.lastname }}</td>
+    <td>{{ user.email }}</td>
+    <td><a href="{% url 'user_view' user.id %}">View</a></td>
+
+
+    <!-- <td><a href="{% url 'user_view' user.id %}" <button class="btn btn-primary btn-sm" type="">View</button> </td> -->
+    <td><a href="{% url 'user_edit' user.id %}" class="fm-update" data-fm-head="Edit User: {{ user }} ?" data-fm-callback="reload">
+                    <button class="btn btn-primary btn-sm" type="">Update</button></a></td>
+    <td><a href="{% url 'user_delete' user.id %}" class="fm-delete" data-fm-head="Delete of User: {{ user }} ?" data-fm-callback="reload">
+                    <button class="btn btn-danger btn-sm" type="">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
